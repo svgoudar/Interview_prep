@@ -41,9 +41,9 @@ Problem:
 
 Softmax computes:
 
-$
+$$
 e^{x_i}
-$
+$$
 
 If $x_i$ is large → exponential explodes.
 
@@ -69,21 +69,21 @@ This is standard in PyTorch and TensorFlow.
 
 Instead of:
 
-$
+$$
 \log(e^a + e^b)
-$
+$$
 
 Use:
 
-$
+$$
 m + \log(e^{a-m} + e^{b-m})
-$
+$$
 
 Where:
 
-$
+$$
 m = \max(a, b)
-$
+$$
 
 This avoids exponential explosion.
 
@@ -119,17 +119,17 @@ Never compute softmax separately before cross entropy.
 
 Problem:
 
-$
+$$
 \log(0) = -\infty
-$
+$$
 
 Solution:
 
 Add small constant:
 
-$
+$$
 \log(x + 1e^{-8})
-$
+$$
 
 Prevents undefined behavior.
 
@@ -187,9 +187,9 @@ Prevents underflow.
 
 Add epsilon in denominators:
 
-$
+$$
 \frac{1}{x + 1e^{-8}}
-$
+$$
 
 Used in:
 
