@@ -1,3 +1,48 @@
+Here is a more **interview-friendly, polished version** of your questions:
+
+---
+
+1. **Numerical Stability in ML**
+
+   * How do you ensure numerical stability during loss computation in machine learning models?
+   * What common techniques (e.g., log-sum-exp trick, gradient clipping, normalization) do you use to prevent overflow or underflow?
+
+2. **Drift Detection**
+
+   * How do you define and detect data or concept drift in production ML systems?
+   * What metrics and statistical methods do you use to trigger alerts and alarms (e.g., KL divergence, PSI, KS test, model performance degradation)?
+
+3. **Messaging Systems Evaluation (RabbitMQ vs Kafka vs Cloud-Native Kafka)**
+
+   * What criteria do you use to evaluate and select between RabbitMQ, Apache Kafka, and cloud-native Kafka solutions?
+   * How do factors like throughput, latency, scalability, durability, operational complexity, and use case influence your decision?
+
+4. **Distributed Cloud Computing & Quorum Optimization**
+
+   * How does quorum-based design impact consistency, availability, and performance in distributed cloud systems?
+   * What trade-offs do you consider when optimizing quorum configurations?
+
+5. **Attention Mechanisms & Positional Encoding**
+
+   * What are the implications of attention mechanisms in transformer models?
+   * Why is positional encoding necessary, and how does it influence sequence modeling?
+
+6. **Text Canonicalization & Cleaning for Vector Databases**
+
+   * Why is text canonicalization and preprocessing important before storing embeddings in a vector database?
+   * How does cleaning impact embedding quality, retrieval accuracy, and semantic search performance?
+
+Explain how to do Fine tune the LLM using parameteer efficient tuning and its types and demonstrate and explain the parameters
+
+
+Explain how to write the unit test and integration test in ML solution
+---
+
+
+
+answer the above in detailed for a person who does not know Machine Learning
+
+
 # How do you ensure numerical stability during loss computation in machine learning models?
 
 Numerical stability means:
