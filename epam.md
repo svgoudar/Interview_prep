@@ -1,0 +1,10 @@
+- Explain Transformer architecture
+- asyncio.wait and gather difference
+- how private key and public key operate in authorization and authenication using openssh
+- explain top_p, top_k, and temperature
+- explain types of semantoc chunking
+- how agents manage multi term memory
+- How agents handle multi term tasks
+- What is the role of embeddings in agents task management also to get the context of previous conversation
+- How LLM handles
+- How vector DB optimizes the storage
