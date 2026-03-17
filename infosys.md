@@ -1,0 +1,3 @@
+- How do i build an Multi Modal RAG
+- Write a code process table , image from the documents in RAG
+- If i find any hyperlink in document how do i handle those in retrieving and processing the chunks
