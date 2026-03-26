@@ -1,0 +1,5 @@
+- How do you pitch in RAG chatbot for business client
+- Design an RAG charbot i worked on generative RAG for LLM fine tuning
+- How would you transition this into RAG driven product
+- How would you optimize the every stage of RAG pipeline
+- How would you an agent to optmize the performance of the RAG using Agentic Franework
