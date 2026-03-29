@@ -9,7 +9,7 @@
 9. What about system monitoring? How would you debug failure cases?
 10. What about feedback loop? how would we track and evaluate?
 11. How would you make the system more deterministic?
-12. How would you replace embedding models and backfill embeddings without any downtime?
+12. 12. How would you replace embedding models and backfill embeddings without any downtime?
 13. What are the fallback mechanisms?
 
 My favourite:
@@ -427,3 +427,35 @@ This interview reminded me that AI Engineering = 20% modeling + 80% engineering,
 If you're preparing for AI/ML roles — master real-world data problems, NLP pipelines, LLM concepts, and scalable ML systems.
 
 Happy to help anyone preparing for AI Engineer interviews — feel free to reach out! 💬
+
+
+
+ue interview experience...
+
+**Last week, I appeared for an interview for an ML Engineer role at Barclays.**
+Sharing this because many people ask *“What exactly do they ask?”* — so here’s the truth.
+
+The interview started calmly with a short introduction and a walkthrough of my background. Once that was done, things moved straight into **core Machine Learning**.
+
+📌 **Roughly 70–80% of the interview was ML-focused**, not just theory but *how you think*.
+
+They covered:
+
+* Supervised vs Unsupervised learning (not definitions, but *when & why*)
+* Bias–variance tradeoff (with real scenarios)
+* Overfitting & underfitting and how to handle them in production
+* Feature selection vs feature engineering
+* Difference between Logistic Regression, Random Forest, and XGBoost
+* Evaluation metrics (why accuracy can be misleading)
+* Handling imbalanced datasets
+* Basic ML system design thinking
+
+What stood out most:
+👉 They were **less interested in memorized answers** and more focused on *decision-making*, *trade-offs*, and *real-world application*.
+
+The interview felt more like a **discussion** than a rapid-fire Q&A. If you’ve actually worked on ML projects and understand *why* you chose certain approaches, you’ll feel comfortable.
+
+Walking out, I realized one thing clearly:
+**Strong fundamentals + clarity of thought > fancy buzzwords.**
+
+Hope this helps someone preparing for ML roles in product-based companies.
