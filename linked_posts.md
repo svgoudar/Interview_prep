@@ -365,3 +365,65 @@ Questions or want to connect? My DMs are open—and for personalized guidance, y
 The landscape is evolving fast. Knowing how to build models isn't enough anymore — you need to know how to ship them.
 
 If you're actively preparing for AI Engineer roles, focus equally on fundamentals AND modern GenAI tooling. That combination is what stands out.
+
+
+
+
+
+Recently I appeared for an AI/ML Engineer interview at High Spring India, and it turned out to be one of the most practical and real-world focused discussions I’ve ever experienced.
+
+Instead of theory or DSA, the interview tested how well I can think and work like a real AI Engineer.
+
+🔹 1️⃣ Coding — Data Cleaning & Handling
+
+Questions were centered around handling real messy production data:
+
+Q1. Clean this “experience” column:
+
+["2 yrs", "3.5", "4 years", "60 months", "Fresher"]
+
+→ Convert everything into consistent numeric years.
+
+Q2. Remove duplicates from a job dataset but keep the most recent entry.
+
+→ Handle timestamps, format issues, missing update times.
+
+🔹 2️⃣ NLP — Resume & Text Intelligence
+
+Real use‑case focused:
+
+Q1. How would you extract skills, experience & job titles from raw resumes (PDF/Text)?
+
+Q2. TF‑IDF vs Word Embeddings — when to use what?
+
+🔹 3️⃣ LLMs — Practical Understanding
+
+Generative AI + real scenarios:
+
+Q1. Explain RAG (Retrieval Augmented Generation). How would you apply it for resume‑based Q&A?
+
+Q2. What are hallucinations in LLMs and how do you control them?
+
+🔹 4️⃣ End-to-End ML/AI Lifecycle
+
+They focused heavily on real engineering:
+
+Full lifecycle: problem scoping → data → features → modeling → deployment → monitoring → MLOps
+
+Q: If your model starts failing in production, how do you debug it?
+
+(drift, schema mismatch, preprocessing mismatch, infra latency, etc.)
+
+🔹 5️⃣ System Design
+
+Q: Design a real-time Resume Screening + Salary Prediction system.
+
+They wanted architecture, pipelines, API flow, scaling, and monitoring.
+
+🌟 Takeaway
+
+This interview reminded me that AI Engineering = 20% modeling + 80% engineering, architecture, data understanding & system design.
+
+If you're preparing for AI/ML roles — master real-world data problems, NLP pipelines, LLM concepts, and scalable ML systems.
+
+Happy to help anyone preparing for AI Engineer interviews — feel free to reach out! 💬
