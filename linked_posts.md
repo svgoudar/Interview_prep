@@ -213,3 +213,56 @@ They experience behavior over time."
 🔹 How do you evaluate a regression model properly?
 
 
+
+
+
+
+ost people want to work in GenAI, but very few know what the roadmap actually looks like — especially when it comes to real projects and interviews.
+
+If you're preparing for GenAI roles, here’s what actually matters:
+
+Step 1: Core ML Foundations
+Understand how models learn, overfit, and generalize.
+Be able to explain train-test split, cross-validation, regularization, and evaluation metrics clearly.
+This is where most interviews filter candidates.
+
+Step 2: Deep Learning Essentials
+Know how to build and train neural networks.
+Experience with PyTorch or TensorFlow is non-negotiable.
+Focus on: activation functions, optimizers, gradient flow, batching, early stopping.
+
+Step 3: Transformer and LLM Fundamentals
+Understand attention, self-attention, encoder-decoder architectures, embeddings, positional encoding, tokenization.
+Be able to explain how LLMs predict tokens and why context windows matter.
+
+Step 4: Prompt Engineering and RAG
+Learn structured prompting, system prompts, chain-of-thought patterns, and context window planning.
+RAG: Chunking, embeddings, vector search (FAISS, Pinecone, Qdrant), retrieval strategies.
+
+Step 5: Fine-tuning Large Models
+When to choose: full fine-tuning, LoRA, QLoRA, PEFT.
+Be able to explain tradeoffs of compute, quality, and domain adaptation.
+
+Step 6: LLMOps (This is where real jobs exist)
+How you deploy and maintain GenAI systems matters more than model building.
+Understand:
+• Model serving
+• KV caching
+• Quantization (FP16, INT8)
+• Model gating and fallback behavior
+• Monitoring hallucinations and drift
+• Observability dashboards
+• Cost-performance optimization in production
+
+Step 7: End-to-End Project Skills
+To stand out, show:
+• Problem framing
+• Dataset decisions
+• Evaluation strategy
+• Latency & cost considerations
+• Clear explanation of tradeoffs
+This is what hiring managers look for — your reasoning.
+
+Interview Tip:
+If your answer sounds like theory, you lose the interviewer.
+If your answer sounds like a design decision made under constraints, you win.
