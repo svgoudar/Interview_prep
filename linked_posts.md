@@ -266,3 +266,102 @@ This is what hiring managers look for — your reasoning.
 Interview Tip:
 If your answer sounds like theory, you lose the interviewer.
 If your answer sounds like a design decision made under constraints, you win.
+
+
+
+nterview Question Series: ProV – AI Engineer
+
+Continuing my journey of sharing real interview questions, strategies, and stories from my Gen AI job search! My goal is to help others preparing for similar roles and to connect with fellow professionals in the field.
+
+Company: ProV
+Position: AI Engineer
+Duration: 1 hour
+
+🔹 Key Interview Questions & Insights
+1. Latest Gen AI Project:
+I was asked to walk through my most recent Gen AI project—highlighting the business problem, my approach, and the impact.
+
+2. Can you tell me how semantic chunking works?
+
+3. Data Privacy in Chatbots:
+They wanted to know how I prevent sensitive information from being shared with LLMs. 
+
+4. General Data Privacy:
+
+5. Evaluating RAG Output:
+
+6. What is LLM as a judge, and how do you implement it? 
+
+7. What is BLEU vs Precision at k?
+
+8. When do you think Agents are not required?
+
+9. How does semantic search works?
+
+📝 Round 2: Real-World Use Case
+AI-Powered Data Extraction from PDFs to Excel:
+Scenario: A manufacturer receives product specs in PDF from suppliers. The task is to automate the extraction of structured info (names, dimensions, parameters, warranties, etc.) into a master Excel sheet.
+
+
+💡 My Experience & Reflection
+I cleared the interview, but due to personal reasons, I couldn’t take up the opportunity. The amazing part? The team referred me to other companies and even highlighted my strengths in Gen AI technologies. That made me so happy and grateful!
+If you perform well in one interview but it doesn’t work out, remember—sometimes it opens other doors you didn’t expect. 🌟
+
+If you found this helpful, please like, comment, or share so it reaches more people who might benefit.
+Questions or want to connect? My DMs are open—and for personalized guidance, you can book a session with me on Topmate as well!
+
+
+
+
+🔹 Difference between Agentic AI vs Generative AI ?
+🔹 Difference between Machine Learning and Deep Learning ?
+🔹 What is Fine-tuning?
+🔹 How does a sentence convert into tokens?
+🔹 What are LLMs (Large Language Models)?
+🔹 What is Hallucination in AI?
+🔹 What is Data Preprocessing?
+🔹 How do you perform Feature Engineering?
+🔹 Explain the Self-Attention Mechanism ?
+🔹 What is a Transformer? Explain its steps ?
+🔹 Importance of Positional Encoding
+🔹 Real-time example of an AI Agent
+🔹 Questions on Python libraries (Pandas, NumPy, Matplotlib)
+🔹 What is an API? What is FastAPI?
+🔹 Types of Machine Learning algorithms with examples
+🔹 Types of Neural Networks
+🔹 Importance of Prompt Engineering
+🔹 Key components of a good prompt
+🔹 Basics of Vector Databases
+🔹 How to evaluate model performance
+🔹 What is a Context Window in LLMs?
+🔹 What is Temperature in LLMs?
+🔹 Discussion on my projects
+🔹 Asked some questions related to Git and Github.
+🔹 Coding questions on Lists, Arrays, and SQL
+
+
+
+1. What is the difference between supervised, unsupervised, and self-supervised learning?
+2. How does gradient descent work? What are its variants?
+3. What is regularization? Explain L1 vs L2.
+4. How do you detect and handle imbalanced datasets?
+5. What is the difference between Bagging and Boosting?
+6. Explain the Transformer architecture in simple terms.
+7. What is attention mechanism and why is it important?
+8. How do you evaluate an NLP model beyond accuracy?
+9. What is fine-tuning vs prompt engineering in LLMs?
+10. How do you deploy an ML model into production?
+11. What is data leakage and how do you prevent it?
+12. Difference between batch normalization and layer normalization?
+13. What is the vanishing gradient problem?
+14. How do vector databases work and where are they used in GenAI?
+
+💡 My Key Observations:
+1. MLOps and deployment knowledge is no longer optional — it's expected.
+2. LLM-related concepts (RAG, fine-tuning, embeddings) are becoming standard interview topics.
+3. Interviewers want to hear your thought process, not just textbook answers.
+4. System design thinking for ML pipelines is increasingly valued.
+
+The landscape is evolving fast. Knowing how to build models isn't enough anymore — you need to know how to ship them.
+
+If you're actively preparing for AI Engineer roles, focus equally on fundamentals AND modern GenAI tooling. That combination is what stands out.
