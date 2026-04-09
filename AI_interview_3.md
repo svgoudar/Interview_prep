@@ -201,3 +201,100 @@ process([])
 - The user's IP address changed
 - The temperature parameter is set above 0
 - The model's weights are being updated in real-time
+
+
+
+Here’s a clear list of the questions visible in the images you shared from the **Python Application Developer (LLM)** interview on FabricQA:
+
+### Question 7 of 9: Batching Events for LLM
+**Problem Statement:**
+
+Batch events into lists so each fits `max_tokens` and `max_bytes`. Oversized events go in their own batch and separate list. Preserve order; use greedy batching. Use notepad for your solution.
+
+**Scenario (KPI Partners context):**  
+KPI Partners builds GenAI copilots that summarize enterprise analytics events (BI usage, pipeline runs, data-quality alerts). Before sending events to an LLM, the application must batch events into request payloads that fit strict limits.
+
+**Task:**  
+Write a Python function that takes a list of event dictionaries and returns a list of batches (each batch is a list of events) such that:
+
+**Constraints & Rules:**
+1. Each batch respects two limits:
+   - `max_tokens`: maximum total token estimate per batch
+   - `max_bytes`: maximum total UTF-8 payload size per batch
+2. Token estimate per event is provided as `event["tokens"]` (integer)
+3. Byte size per event should be computed as `len(json.dumps(event, separators=(",", ":"), sort_keys=True).encode('utf-8'))`
+4. Preserve input order within and across batches (greedy strategy)
+5. Add events to the current batch until adding the next would exceed either limit; then start a new batch
+6. If a single event exceeds either limit by itself, it must be placed in its own batch and also returned in a separate list of `oversized_events`
+
+**Function Signature:**
+```python
+from typing import List, Dict, Tuple
+
+def batch_events_for_llm(
+    events: List[Dict],
+    max_tokens: int,
+    max_bytes: int
+) -> Tuple[List[List[Dict]], List[Dict]]:
+    ...
+    # Return (batches, oversized_events)
+```
+```
+import json
+from typing import List, Dict, Tuple
+
+def batch_events_for_llm(
+    events: List[Dict],
+    max_tokens: int,
+    max_bytes: int
+) -> Tuple[List[List[Dict]], List[Dict]]:
+    
+    batches = []
+    current_batch = []
+    current_tokens = 0
+    current_bytes = 0
+    oversized_events = []
+
+    for event in events:
+        tokens = event.get("tokens", 0)
+        byte_size = len(json.dumps(event, separators=(",", ":"), sort_keys=True).encode("utf-8"))
+
+        # Check if event itself is oversized
+        if tokens > max_tokens or byte_size > max_bytes:
+            oversized_events.append(event)
+            batches.append([event])  # its own batch
+            continue
+
+        # Check if adding to current batch exceeds limits
+        if (current_tokens + tokens > max_tokens) or (current_bytes + byte_size > max_bytes):
+            if current_batch:
+                batches.append(current_batch)
+            current_batch = [event]
+            current_tokens = tokens
+            current_bytes = byte_size
+        else:
+            current_batch.append(event)
+            current_tokens += tokens
+            current_bytes += byte_size
+
+    # Add last batch if not empty
+    if current_batch:
+        batches.append(current_batch)
+
+    return batches, oversized_events
+```
+
+**Example & Notes:**
+- Greedy batching should preserve order
+- Aim for linear time
+- Do not reorder events
+- You may precompute sizes/tokens per event
+
+---
+
+### Question 8:
+**You're developing a GenAI app using a large language model to answer customer queries based on company docs. Responses are often slow and inconsistent. How would you optimize this, and what key factors would you consider?**
+
+(This is an open-ended / discussion question — no multiple-choice options.)
+
+---
