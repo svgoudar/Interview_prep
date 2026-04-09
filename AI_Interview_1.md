@@ -322,7 +322,94 @@ Choose all that apply:
 
 ---
 
-If you want, I can next:
+All questions and options from the **newly added images** (complete, no omissions):
 
-* Provide **all correct answers**
-* Or give **quick reasoning shortcuts** for each (useful for interviews)
+---
+
+## **21. Self Attention**
+
+**Question:**
+Which of the following are differences between self-attention and the recurrent connections of an RNN?
+
+**Options:**
+
+* The length of input to a self-attention layer is different from the length of its output, while in a recurrent unit the lengths of input and output are the same
+* Self-attention can use information from any part of the input directly, while recurrent connections need to pass that information through multiple time steps
+* Self-attention processes inputs sequentially and thus cannot be parallelized, while each of the recurrent connections is processed independently and can be parallelized
+* None of the above are correct
+
+---
+
+## **22. Byte-Pair Encoding**
+
+**Question:**
+Which of the following is a plausible byte-pair encoding for the sentence:
+**"He looked at the sun."**
+
+**Options:**
+
+* he, looked, at, the, sun
+* he, look, at, the, sun
+* he, lo, ok, ed, at, th, e, s, un
+* he_, look_ed_, at_, t, he_, sun_
+
+---
+
+## **23. Tag Pattern**
+
+**Question:**
+Assume a Penn Treebank tagger has 100% accuracy on the phrases below. After tagging, how many of these will exactly match the following tag pattern?
+
+**Pattern:**
+
+```
+<DT>?<JJ.*>* 
+<NN.*>+
+```
+
+**Phrases (visible):**
+
+* prices were falling to 2%
+* after the meeting
+* our fearless CEO
+* an unexpected calamity
+* the day after
+* red letter day
+
+**Options:**
+
+* 1
+* 2
+* 3
+* 4
+* 5
+
+---
+
+
+**25**
+Adding Layers:
+You add more layers to a neural network because it appears to be underfitting. Now you observe validation accuracy no longer converges during training. Which of the following could conceivably address this issue?
+------------------------------
+**Options**
+
+* Option 1: Decrease the number of training epochs with early stopping
+* Option 2: Add more training data to mitigate overfitting
+* Option 3: Increase the learning rate and decrease batch size
+* Option 4: Use a different activation function
+
+------------------------------
+
+**26**
+Hundred Epochs:
+After training a deep neural network for 100 epochs, it achieved high accuracy on the training data but low accuracy on the test data. You believe the model is overfit. Which of the following techniques might address this problem?
+------------------------------
+ - **Options**
+
+* Option 1: Use more layers in the network
+* Option 2: Increase the width of the top layers
+* Option 3: Employ gradient checking
+* Option 4: Apply early stopping
+* Option 5: Add dropout
+
+----------------------
