@@ -344,16 +344,3 @@ These were asked during the live AI/video interview:
 
 ---
 
-### 5. Other Visible Items
-- A physical item (blue microfiber cloth + packing tape) – possibly unrelated or packaging from something you ordered.
-- A map showing Moscow, Samara, Izhevsk (Russia) – likely background or unrelated.
-
----
-
-Would you like me to:
-- Provide a **sample solution** for the **SQL query**?
-- Help with the **Python embedding + RAG module** code?
-- Give **strong answer points** for the behavioral/AI questions?
-- Or focus on the **DSA problems** (topological sort / level order / shortest path)?
-
-Just tell me which one(s) you need help with right now!
