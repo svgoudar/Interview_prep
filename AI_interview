@@ -1,0 +1,65 @@
+
+### 1.
+
+**Thanks for that insight into monitoring, Sanjeev!**
+Now, how do you determine the right time to retrain your model, and what does the orchestration process look like for you?
+
+---
+
+### 2.
+
+Your discussion about adapting your approach based on the knowledge source illustrates a solid understanding of how to tailor model deployment effectively.
+Can you share a specific example from your experience where you had to choose between fine-tuning or using prompt engineering, detailing the situation, your decision-making process, and the outcome?
+
+---
+
+### 3.
+
+It's okay if you're not familiar with that, Sanjeev!
+Can you tell me what you think are the key stages in deploying a machine learning model?
+
+---
+
+### 4.
+
+Thanks for sharing your approach with AWS SageMaker, Sanjeev!
+Now, I'm curious about how you would go about creating a point-in-time correct training dataset in SQL for a churn model. What steps would you take?
+
+---
+
+### 5.
+
+I appreciate your focus on creating a reliable training dataset, Sanjeev!
+Now, after deployment, what key metrics do you monitor, and how do you automate the detection of potential issues that might arise?
+
+---
+
+### 6.
+
+I appreciate you detailing your retraining process, Sanjeev!
+Now, I'm curious about the interplay between different data systems. How do you see a lakehouse, feature store, and data warehouse fitting together in your machine learning architecture?
+
+---
+
+### 7.
+
+Thanks for explaining how those systems interact, Sanjeev!
+Now, let's dive deeper into the technical side. For a retrieval augmented generation (RAG) assistant, how would you approach designing the aspects of chunking, retrieval, grounding, and evaluation?
+
+---
+
+### 8.
+
+I appreciate your insights on the metrics involved, Sanjeev!
+So, when it comes to working with an LLM use case, how do you decide whether to fine-tune the model or just use prompting combined with tools?
+
+---
+
+### 9.
+
+Got it, thanks for that brief overview, Sanjeev!
+Moving on, how do you ensure that your training runs are reproducible across different environments? What practices do you follow?
+
+---
+
+
