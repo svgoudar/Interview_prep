@@ -238,6 +238,131 @@
 * `retrieve_and_answer()`
 * `mock_llm_generate()`
 
+
+```
+import typing
+import numpy as np
+
+
+# -----------------------------
+# 1. Simple Embedder
+# -----------------------------
+class SimpleEmbedder:
+    def __init__(self):
+        pass
+
+    def embed(self, texts: typing.List[str]) -> np.ndarray:
+        """
+        Deterministic embedding using simple hashing of characters.
+        Output shape: (len(texts), embedding_dim)
+        """
+        embedding_dim = 10
+        embeddings = []
+
+        for text in texts:
+            vec = np.zeros(embedding_dim)
+            for i, ch in enumerate(text):
+                vec[i % embedding_dim] += ord(ch)
+            # normalize
+            norm = np.linalg.norm(vec)
+            if norm > 0:
+                vec = vec / norm
+            embeddings.append(vec)
+
+        return np.array(embeddings)
+
+
+# -----------------------------
+# 2. In-Memory Vector Store
+# -----------------------------
+class InMemoryVectorStore:
+    def __init__(self, embeddings: np.ndarray, documents: typing.List[str]):
+        self.embeddings = embeddings
+        self.documents = documents
+
+    def similarity_search(
+        self, query_embedding: np.ndarray, k: int = 3
+    ) -> typing.List[typing.Tuple[str, float]]:
+        """
+        Cosine similarity search
+        Returns top-k (document, score)
+        """
+        scores = []
+
+        for i, emb in enumerate(self.embeddings):
+            score = np.dot(query_embedding, emb)
+            scores.append((self.documents[i], score))
+
+        # sort by similarity descending
+        scores.sort(key=lambda x: x[1], reverse=True)
+
+        return scores[:k]
+
+
+# -----------------------------
+# 3. Mock LLM
+# -----------------------------
+def mock_llm_generate(prompt: str) -> str:
+    """
+    Simple mock response generator
+    """
+    return f"LLM Answer based on context: {prompt[:150]}"
+
+
+# -----------------------------
+# 4. Simple RAG Pipeline
+# -----------------------------
+class SimpleRAG:
+    def __init__(self, docs: typing.List[str]):
+        self.docs = docs
+        self.embedder = SimpleEmbedder()
+
+        # create embeddings
+        self.doc_embeddings = self.embedder.embed(docs)
+
+        # vector store
+        self.vector_store = InMemoryVectorStore(self.doc_embeddings, docs)
+
+    def retrieve_and_answer(self, query: str, k: int = 3) -> dict:
+        # embed query
+        query_embedding = self.embedder.embed([query])[0]
+
+        # retrieve top-k docs
+        retrieved = self.vector_store.similarity_search(query_embedding, k)
+
+        retrieved_docs = [doc for doc, _ in retrieved]
+
+        # build prompt
+        context = "\n".join(retrieved_docs)
+        prompt = f"Context:\n{context}\n\nQuestion: {query}\nAnswer:"
+
+        # mock LLM call
+        answer = mock_llm_generate(prompt)
+
+        return {
+            "query": query,
+            "documents": retrieved_docs,
+            "answer": answer,
+        }
+
+
+# -----------------------------
+# Example Usage
+# -----------------------------
+if __name__ == "__main__":
+    docs = [
+        "A: Python is a programming language.",
+        "B: FAISS is a vector index.",
+        "C: Python supports multiple paradigms.",
+    ]
+
+    rag = SimpleRAG(docs)
+
+    result = rag.retrieve_and_answer("What is Python?", k=2)
+
+    print(result)
+
+```
 ---
 
 # 🎯 SECTION 5: IMPLICIT FOLLOW-UP QUESTIONS (VERY IMPORTANT)
