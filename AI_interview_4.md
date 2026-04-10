@@ -1,330 +1,328 @@
-Here’s a clear summary of **all the visible questions and tasks** from the images you shared (from your interviews and assessments on 09/04/2026):
+# 🧾 Extracted Questions
 
-### 1. Python, LLM Integration Coding Task (IntelliSwift)
-**Question:**  
-Build a small Python module for text document embeddings and retrieval:
+## 1. DSA – Graph (Hard)
 
-- Accept a corpus of text documents
-- Create in-memory embeddings for each document
-- Build a vector index supporting similarity search
-- Expose a `retrieve_and_answer` function that returns top-k most similar documents + a mock LLM-generated answer
+**Shortest Path in Graph (Dijkstra’s Algorithm)**
 
-**Example:**
-- Documents: `["A: Python is a programming language.", "B: FAISS is a vector index."]`
-- Query: `"What is Python?"`
-- Expected: Retrieve relevant passages and return them with an LLM-generated answer string.
+**Problem Statement:**
 
-**Note:** Use in-memory index only (no external services). Evaluation checks embedding generation, similarity search, retrieval, and mock LLM integration.
+* Given a directed graph represented as an adjacency list with weighted edges
+* Find the shortest path from a starting node to all other nodes
+* Graph constraints:
 
-```
-import typing
-import numpy as np
-
-
-# -----------------------------
-# 1. Simple Embedder
-# -----------------------------
-class SimpleEmbedder:
-    def __init__(self):
-        pass
-
-    def embed(self, texts: typing.List[str]) -> np.ndarray:
-        """
-        Deterministic embedding using simple hashing of characters.
-        Output shape: (len(texts), embedding_dim)
-        """
-        embedding_dim = 10
-        embeddings = []
-
-        for text in texts:
-            vec = np.zeros(embedding_dim)
-            for i, ch in enumerate(text):
-                vec[i % embedding_dim] += ord(ch)
-            # normalize
-            norm = np.linalg.norm(vec)
-            if norm > 0:
-                vec = vec / norm
-            embeddings.append(vec)
-
-        return np.array(embeddings)
-
-
-# -----------------------------
-# 2. In-Memory Vector Store
-# -----------------------------
-class InMemoryVectorStore:
-    def __init__(self, embeddings: np.ndarray, documents: typing.List[str]):
-        self.embeddings = embeddings
-        self.documents = documents
-
-    def similarity_search(
-        self, query_embedding: np.ndarray, k: int = 3
-    ) -> typing.List[typing.Tuple[str, float]]:
-        """
-        Cosine similarity search
-        Returns top-k (document, score)
-        """
-        scores = []
-
-        for i, emb in enumerate(self.embeddings):
-            score = np.dot(query_embedding, emb)
-            scores.append((self.documents[i], score))
-
-        # sort by similarity descending
-        scores.sort(key=lambda x: x[1], reverse=True)
-
-        return scores[:k]
-
-
-# -----------------------------
-# 3. Mock LLM
-# -----------------------------
-def mock_llm_generate(prompt: str) -> str:
-    """
-    Simple mock response generator
-    """
-    return f"LLM Answer based on context: {prompt[:150]}"
-
-
-# -----------------------------
-# 4. Simple RAG Pipeline
-# -----------------------------
-class SimpleRAG:
-    def __init__(self, docs: typing.List[str]):
-        self.docs = docs
-        self.embedder = SimpleEmbedder()
-
-        # create embeddings
-        self.doc_embeddings = self.embedder.embed(docs)
-
-        # vector store
-        self.vector_store = InMemoryVectorStore(self.doc_embeddings, docs)
-
-    def retrieve_and_answer(self, query: str, k: int = 3) -> dict:
-        # embed query
-        query_embedding = self.embedder.embed([query])[0]
-
-        # retrieve top-k docs
-        retrieved = self.vector_store.similarity_search(query_embedding, k)
-
-        retrieved_docs = [doc for doc, _ in retrieved]
-
-        # build prompt
-        context = "\n".join(retrieved_docs)
-        prompt = f"Context:\n{context}\n\nQuestion: {query}\nAnswer:"
-
-        # mock LLM call
-        answer = mock_llm_generate(prompt)
-
-        return {
-            "query": query,
-            "documents": retrieved_docs,
-            "answer": answer,
-        }
-
-
-# -----------------------------
-# Example Usage
-# -----------------------------
-if __name__ == "__main__":
-    docs = [
-        "A: Python is a programming language.",
-        "B: FAISS is a vector index.",
-        "C: Python supports multiple paradigms.",
-    ]
-
-    rag = SimpleRAG(docs)
-
-    result = rag.retrieve_and_answer("What is Python?", k=2)
-
-    print(result)
-```
----
-
-### 2. SQL Assessment (Happiest Minds – Aiml Engineer)
-**Question 1: Sales Performance By Region And Product**
-
-A retail company wants to analyze sales performance across regions and product categories.
-
-**Tables:**
-- `sales` (sale_id, product_id, region_id, quantity_sold, sale_date)
-- `products` (product_id, category_id, product_name)
-- `categories` (category_id, category_name)
-- `regions` (region_id, region_name)
-
-**Task:**  
-Write a PostgreSQL query to calculate the **total quantity sold for each product category in each region**.  
-Display: `region_name`, `category_name`, `total_quantity_sold`.  
-Order by `region_name` first, then `category_name`.
-
-**Constraint:** Handle cases where there are **no sales** in a region or category (do not exclude them).
-
-```sql
-
-SELECT 
-    r.region_name,
-    c.category_name,
-    COALESCE(SUM(s.quantity), 0) AS total_quantity_sold
-FROM regions r
-CROSS JOIN categories c
-LEFT JOIN products p 
-    ON p.category_id = c.category_id
-LEFT JOIN sales s 
-    ON s.product_id = p.product_id 
-    AND s.region_id = r.region_id
-GROUP BY r.region_name, c.category_name
-ORDER BY r.region_name, c.category_name;
-
-```
+  * At least 2 nodes
+  * Edge weights are positive integers (≤ 10⁶)
+* If a node is unreachable → return `-1` for that node
 
 ---
 
-### 3. DSA Assessment (OpenIntervue)
-**Problem:** Level Order Traversal of a Binary Tree (represented as graph/adjacency list)  
-- Return values of nodes level by level, from left to right.
-- If tree is empty, return empty list.
+## 2. SQL – Database Query
 
-**Another Problem:** Shortest Path in Graph (Dijkstra’s algorithm) with weighted edges.
+**Sales Performance By Region And Product**
 
-**Another Problem:** Topological Sort / Course Schedule with prerequisites (detect cycles, return valid order or empty if impossible).
+**Problem Statement:**
+
+* Given tables:
+
+  * `sales`
+  * `products`
+  * `categories`
+  * `regions`
+
+**Task:**
+
+* Calculate **total quantity sold for each product category in each region**
+
+**Output:**
+
+* `region_name`
+* `category_name`
+* `total_quantity_sold`
+
+**Constraints:**
+
+* Must handle cases where:
+
+  * No sales exist for a region/category
+  * Those rows should still appear in output
+
+**Sorting:**
+
+* Order by:
+
+  * `region_name`
+  * then `category_name`
+
+---
+
+## 3. DSA – Graph (Medium)
+
+**Course Schedule / Topological Sort**
+
+**Problem Statement:**
+
+* Given:
+
+  * `n` courses (0 to n-1)
+  * List of prerequisite pairs `[a, b]`
+* `b` must be completed before `a`
+
+**Task:**
+
+* Determine a valid order to complete all courses
+
+**Output:**
+
+* Valid order of courses
+* If cycle exists → return **empty list/string**
+
+**Constraints:**
+
+* `1 ≤ courses ≤ 10,000`
+
+---
+
+## 4. DSA – Tree (Medium)
+
+**Level Order Traversal of Binary Tree (Graph Representation)**
+
+**Problem Statement:**
+
+* Binary tree represented as:
+
+  * Graph / adjacency list
+  * Each node has at most 2 children
+
+**Task:**
+
+* Perform **level order traversal**
+* Return values **level by level (left to right)**
+
+**Input Details:**
+
+* `n` nodes
+* Each line contains:
+
+  * `node, left_child, right_child`
+* `-1` indicates no child
+
+**Output:**
+
+* List of lists:
+
+  * Each inner list = nodes at that level
+
+**Edge Case:**
+
+* If tree is empty → return empty list
+
+---
+
+### 📊 Summary (All Questions)
+
+| # | Category | Difficulty | Topic                    |
+| - | -------- | ---------- | ------------------------ |
+| 1 | DSA      | Hard       | Dijkstra (Shortest Path) |
+| 2 | SQL      | Medium     | Aggregation + Joins      |
+| 3 | DSA      | Medium     | Topological Sort         |
+| 4 | DSA      | Medium     | Level Order Traversal    |
 
 
-```
-from collections import deque, defaultdict
+## 1) Shortest Path in Graph — Dijkstra’s Algorithm
+
+```python id="h5k1pq"
 import heapq
+import sys
 
+def solve():
+    input = sys.stdin.readline
+    n, m = map(int, input().split())
 
-# ---------------------------------------------------
-# 1) Level Order Traversal of a Binary Tree
-# Tree represented as adjacency:
-# {
-#   node: [left_child, right_child]
-# }
-# values:
-# {
-#   node: value
-# }
-# root: root node id
-# ---------------------------------------------------
-def level_order_traversal(adj, values, root):
-    if root is None or root not in values:
-        return []
+    graph = [[] for _ in range(n)]
+    for _ in range(m):
+        u, v, w = map(int, input().split())
+        graph[u].append((v, w))
 
-    result = []
-    q = deque([root])
+    s = int(input().strip())
 
-    while q:
-        level_size = len(q)
-        level = []
+    INF = float('inf')
+    dist = [INF] * n
+    dist[s] = 0
 
-        for _ in range(level_size):
-            node = q.popleft()
-            level.append(values[node])
+    pq = [(0, s)]  # (distance, node)
 
-            children = adj.get(node, [])
-            for child in children:
-                if child is not None:
-                    q.append(child)
+    while pq:
+        curr_dist, node = heapq.heappop(pq)
 
-        result.append(level)
-
-    return result
-
-
-# Example:
-# adj_tree = {
-#     1: [2, 3],
-#     2: [4, 5],
-#     3: [6, 7]
-# }
-# values_tree = {
-#     1: 10, 2: 20, 3: 30, 4: 40, 5: 50, 6: 60, 7: 70
-# }
-# print(level_order_traversal(adj_tree, values_tree, 1))
-# Output: [[10], [20, 30], [40, 50, 60, 70]]
-
-
-# ---------------------------------------------------
-# 2) Dijkstra’s Algorithm for Shortest Path
-# Graph represented as:
-# {
-#   node: [(neighbor, weight), ...]
-# }
-# Returns shortest distance from source to all nodes.
-# ---------------------------------------------------
-def dijkstra(graph, source):
-    distances = {node: float("inf") for node in graph}
-    distances[source] = 0
-
-    min_heap = [(0, source)]
-
-    while min_heap:
-        curr_dist, node = heapq.heappop(min_heap)
-
-        if curr_dist > distances[node]:
+        if curr_dist > dist[node]:
             continue
 
-        for neighbor, weight in graph.get(node, []):
-            new_dist = curr_dist + weight
-            if new_dist < distances.get(neighbor, float("inf")):
-                distances[neighbor] = new_dist
-                heapq.heappush(min_heap, (new_dist, neighbor))
+        for nei, w in graph[node]:
+            new_dist = curr_dist + w
+            if new_dist < dist[nei]:
+                dist[nei] = new_dist
+                heapq.heappush(pq, (new_dist, nei))
 
-    return distances
+    for i in range(n):
+        print(-1 if dist[i] == INF else dist[i])
 
+if __name__ == "__main__":
+    solve()
+```
 
-# Example:
-# graph_weighted = {
-#     'A': [('B', 1), ('C', 4)],
-#     'B': [('C', 2), ('D', 5)],
-#     'C': [('D', 1)],
-#     'D': []
-# }
-# print(dijkstra(graph_weighted, 'A'))
-# Output: {'A': 0, 'B': 1, 'C': 3, 'D': 4}
+**Time complexity:** `O((V + E) log V)`
 
+---
 
-# ---------------------------------------------------
-# 3) Topological Sort / Course Schedule
-# num_courses = total number of courses labeled 0..num_courses-1
-# prerequisites = [(course, prereq), ...]
-# Return valid order or [] if cycle exists.
-# ---------------------------------------------------
-def topological_sort(num_courses, prerequisites):
-    graph = defaultdict(list)
-    indegree = [0] * num_courses
+## 2) SQL — Total quantity sold for each category in each region
 
-    for course, prereq in prerequisites:
-        graph[prereq].append(course)
-        indegree[course] += 1
+```sql id="u9t4mw"
+SELECT
+    r.region_name,
+    c.category_name,
+    COALESCE(SUM(s.quantity_sold), 0) AS total_quantity_sold
+FROM regions r
+CROSS JOIN categories c
+LEFT JOIN products p
+    ON p.category_id = c.category_id
+LEFT JOIN sales s
+    ON s.product_id = p.product_id
+   AND s.region_id = r.region_id
+GROUP BY r.region_name, c.category_name
+ORDER BY r.region_name, c.category_name;
+```
 
-    q = deque([i for i in range(num_courses) if indegree[i] == 0])
+**Why this works**
+
+* `CROSS JOIN` creates every `region × category` combination
+* `LEFT JOIN` keeps rows even where no sales exist
+* `COALESCE(..., 0)` returns `0` instead of `NULL`
+
+---
+
+## 3) Course Schedule / Topological Sort
+
+```python id="m2x8zc"
+from collections import deque
+import sys
+
+def solve():
+    input = sys.stdin.readline
+    n, p = map(int, input().split())
+
+    graph = [[] for _ in range(n)]
+    indegree = [0] * n
+
+    for _ in range(p):
+        a, b = map(int, input().split())
+        graph[b].append(a)   # b -> a
+        indegree[a] += 1
+
+    q = deque()
+    for i in range(n):
+        if indegree[i] == 0:
+            q.append(i)
+
     order = []
 
     while q:
         node = q.popleft()
         order.append(node)
 
-        for neighbor in graph[node]:
-            indegree[neighbor] -= 1
-            if indegree[neighbor] == 0:
-                q.append(neighbor)
+        for nei in graph[node]:
+            indegree[nei] -= 1
+            if indegree[nei] == 0:
+                q.append(nei)
 
-    return order if len(order) == num_courses else []
+    if len(order) != n:
+        print("")
+    else:
+        print(*order)
 
-
-# Example:
-# num_courses = 4
-# prerequisites = [(1, 0), (2, 0), (3, 1), (3, 2)]
-# print(topological_sort(num_courses, prerequisites))
-# Possible output: [0, 1, 2, 3]
-
-# Cycle example:
-# num_courses = 2
-# prerequisites = [(0, 1), (1, 0)]
-# print(topological_sort(num_courses, prerequisites))
-# Output: []
+if __name__ == "__main__":
+    solve()
 ```
+
+**Time complexity:** `O(V + E)`
+
+---
+
+## 4) Level Order Traversal of Binary Tree
+
+The image shows input like:
+
+* `n`
+* then `n` lines containing `node left_child right_child`
+* `-1` means no child
+
+A robust way is:
+
+* store children
+* find root as the node that never appears as a child
+* do BFS
+
+```python id="r7n3vk"
+from collections import deque
+import sys
+
+def solve():
+    input = sys.stdin.readline
+    n = int(input().strip())
+
+    if n == 0:
+        print([])
+        return
+
+    children = {}
+    all_nodes = set()
+    child_nodes = set()
+
+    for _ in range(n):
+        node, left, right = map(int, input().split())
+        children[node] = (left, right)
+        all_nodes.add(node)
+
+        if left != -1:
+            child_nodes.add(left)
+            all_nodes.add(left)
+        if right != -1:
+            child_nodes.add(right)
+            all_nodes.add(right)
+
+    roots = list(all_nodes - child_nodes)
+    if not roots:
+        print([])
+        return
+
+    root = roots[0]
+
+    result = []
+    q = deque([root])
+
+    while q:
+        size = len(q)
+        level = []
+
+        for _ in range(size):
+            node = q.popleft()
+            level.append(node)
+
+            left, right = children.get(node, (-1, -1))
+            if left != -1:
+                q.append(left)
+            if right != -1:
+                q.append(right)
+
+        result.append(level)
+
+    print(result)
+
+if __name__ == "__main__":
+    solve()
+```
+
+**Time complexity:** `O(n)`
+
 ---
 
 ### 4. Behavioral / AI Interview Questions (Pihu / Charlie AI)
