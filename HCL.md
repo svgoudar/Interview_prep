@@ -334,4 +334,6 @@ Race condition on shared state
 * **Concurrency** → locking, queues, event sourcing
 * **Agent architectures** → ReAct, multi-agent, hierarchical, graph
 
-If needed, a production-grade architecture diagram combining all these can be provided.
+
+## WHat is graphRAG
+
